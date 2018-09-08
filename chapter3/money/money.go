@@ -14,6 +14,6 @@ func (d *Dollar) times(multiplier int) *Dollar {
 	return NewDollar(d.amount * multiplier)
 }
 
-func (d *Dollar) equals(*Dollar) bool {
-	return true
+func (d *Dollar) equals(comp_d *Dollar) bool {
+	return d.amount == comp_d.amount
 }

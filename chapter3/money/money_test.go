@@ -20,4 +20,7 @@ func TestEquality(t *testing.T) {
 	if !NewDollar(5).equals(NewDollar(5)) {
 		t.Error("equalsエラー！")
 	}
+	if NewDollar(5).equals(NewDollar(6)) {
+		t.Error("equalsエラー！")
+	}
 }
