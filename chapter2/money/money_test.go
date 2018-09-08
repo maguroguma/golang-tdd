@@ -6,12 +6,12 @@ import (
 
 func TestMultiplication(t *testing.T) {
 	five := NewDollar(5)
-	five.times(2)
-	if 10 != five.amount {
+	product := five.times(2)
+	if 10 != product.amount {
 		t.Error("同値エラー！")
 	}
-	five.times(3)
-	if 15 != five.amount {
+	product = five.times(3)
+	if 15 != product.amount {
 		t.Error("同値エラー！")
 	}
 }
