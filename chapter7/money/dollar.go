@@ -28,7 +28,7 @@ func (d *Dollar) Equals(obj interface{}) bool {
 	case *Dollar:
 		return d.money.equals(obj.(*Dollar).money)
 	case *Franc:
-		return d.money.equals(obj.(*Franc).money)
+		return false
 	default:
 		return false
 	}

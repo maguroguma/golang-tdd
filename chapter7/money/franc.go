@@ -26,7 +26,7 @@ func (f *Franc) SetAmount(amount int) {
 func (f *Franc) Equals(obj interface{}) bool {
 	switch obj.(type) {
 	case *Dollar:
-		return f.money.equals(obj.(*Dollar).money)
+		return false
 	case *Franc:
 		return f.money.equals(obj.(*Franc).money)
 	default:
