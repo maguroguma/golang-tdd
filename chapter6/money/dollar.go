@@ -7,22 +7,22 @@ type Dollar struct {
 func NewDollar(amount int) *Dollar {
 	d := new(Dollar)
 	d.money = new(money)
-	d.money.SetAmount(amount)
+	d.money.setAmount(amount)
 	return d
 }
 
 func (d *Dollar) Times(multiplier int) *Dollar {
-	return NewDollar(d.money.GetAmount() * multiplier)
+	return NewDollar(d.money.getAmount() * multiplier)
 }
 
 func (d *Dollar) GetAmount() int {
-	return d.money.GetAmount()
+	return d.money.getAmount()
 }
 
 func (d *Dollar) SetAmount(amount int) {
-	d.money.SetAmount(amount)
+	d.money.setAmount(amount)
 }
 
 func (d *Dollar) Equals(comp_d *Dollar) bool {
-	return d.money.Equals(comp_d.money)
+	return d.money.equals(comp_d.money)
 }
