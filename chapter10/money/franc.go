@@ -29,7 +29,6 @@ func (f *Franc) Equals(obj interface{}) bool {
 		return false
 	}
 }
-
 func (f *Franc) Currency() string {
 	return f.money.GetCurrency()
 }

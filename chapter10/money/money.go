@@ -23,8 +23,18 @@ func (m *money) GetAmount() int {
 func (m *money) SetAmount(amount int) {
 	m.amount = amount
 }
-func (m *money) Equals(comp_m *money) bool {
-	return m.amount == comp_m.amount
+
+func (m *money) Equals(obj interface{}) bool {
+	switch obj.(type) {
+	case *money:
+		return m.amount == obj.(*money).amount
+	case *Dollar:
+		return m.amount == obj.(*Dollar).money.amount
+	case *Franc:
+		return m.amount == obj.(*Franc).money.amount
+	default:
+		return false
+	}
 }
 func (m *money) GetCurrency() string {
 	return m.currency
