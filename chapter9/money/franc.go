@@ -6,8 +6,7 @@ type Franc struct {
 
 func NewFranc(amount int) *Franc {
 	f := new(Franc)
-	f.money = new(money)
-	f.money.SetAmount(amount)
+	f.money = NewMoney(amount, "CHF")
 	return f
 }
 
@@ -29,4 +28,8 @@ func (f *Franc) Equals(obj interface{}) bool {
 	default:
 		return false
 	}
+}
+
+func (f *Franc) Currency() string {
+	return f.money.GetCurrency()
 }

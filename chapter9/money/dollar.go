@@ -6,8 +6,7 @@ type Dollar struct {
 
 func NewDollar(amount int) *Dollar {
 	d := new(Dollar)
-	d.money = new(money)
-	d.money.SetAmount(amount)
+	d.money = NewMoney(amount, "USD")
 	return d
 }
 
@@ -29,4 +28,7 @@ func (d *Dollar) Equals(obj interface{}) bool {
 	default:
 		return false
 	}
+}
+func (d *Dollar) Currency() string {
+	return d.money.GetCurrency()
 }
