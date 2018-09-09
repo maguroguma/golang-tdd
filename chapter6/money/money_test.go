@@ -18,10 +18,17 @@ func TestMultiplication(t *testing.T) {
 
 func TestEquality(t *testing.T) {
 	if !NewDollar(5).Equals(NewDollar(5)) {
-		t.Error("equalsエラー！")
+		t.Error("Dollar Equalsエラー！")
 	}
 	if NewDollar(5).Equals(NewDollar(6)) {
-		t.Error("equalsエラー！")
+		t.Error("Dollar Equalsエラー！")
+	}
+
+	if !NewFranc(5).Equals(NewFranc(5)) {
+		t.Error("Franc Equalsエラー！")
+	}
+	if NewFranc(5).Equals(NewFranc(6)) {
+		t.Error("Franc Equalsエラー！")
 	}
 }
 
