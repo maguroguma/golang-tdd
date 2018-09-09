@@ -1,23 +1,29 @@
 package money
 
-//type Money interface {
-//	GetAmount() int
-//	SetAmount(int) int
-//	Equals(*Money) bool
-//}
+type Money interface {
+	GetAmount() int
+	SetAmount(int)
+	Equals(interface{}) bool
+	Times(int) Money
+}
 
-type Money struct {
+type money struct {
 	amount int
 }
 
-func (m *Money) GetAmount() int {
+func (m *money) GetAmount() int {
 	return m.amount
 }
-
-func (m *Money) SetAmount(amount int) {
+func (m *money) SetAmount(amount int) {
 	m.amount = amount
 }
-
-func (m *Money) Equals(comp_m *Money) bool {
+func (m *money) Equals(comp_m *money) bool {
 	return m.amount == comp_m.amount
+}
+
+func MakeDollar(amount int) Money {
+	return NewDollar(amount)
+}
+func MakeFranc(amount int) Money {
+	return NewFranc(amount)
 }
