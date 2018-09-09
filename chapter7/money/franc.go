@@ -23,6 +23,13 @@ func (f *Franc) SetAmount(amount int) {
 	f.money.setAmount(amount)
 }
 
-func (f *Franc) Equals(comp_f *Franc) bool {
-	return f.money.equals(comp_f.money)
+func (f *Franc) Equals(obj interface{}) bool {
+	switch obj.(type) {
+	case *Dollar:
+		return f.money.equals(obj.(*Dollar).money)
+	case *Franc:
+		return f.money.equals(obj.(*Franc).money)
+	default:
+		return false
+	}
 }

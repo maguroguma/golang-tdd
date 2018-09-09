@@ -23,6 +23,13 @@ func (d *Dollar) SetAmount(amount int) {
 	d.money.setAmount(amount)
 }
 
-func (d *Dollar) Equals(comp_d *Dollar) bool {
-	return d.money.equals(comp_d.money)
+func (d *Dollar) Equals(obj interface{}) bool {
+	switch obj.(type) {
+	case *Dollar:
+		return d.money.equals(obj.(*Dollar).money)
+	case *Franc:
+		return d.money.equals(obj.(*Franc).money)
+	default:
+		return false
+	}
 }

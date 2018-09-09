@@ -19,6 +19,8 @@ func TestEquality(t *testing.T) {
 	assert.False(t, NewDollar(5).Equals(NewDollar(6)), "Dollar Not Equal!")
 	assert.True(t, NewFranc(5).Equals(NewFranc(5)), "Franc Equal!")
 	assert.False(t, NewFranc(5).Equals(NewFranc(6)), "Franc Not Equal!")
+	assert.False(t, NewFranc(5).Equals(NewDollar(5)), "Franc and Dollar Not Equal!")
+	assert.False(t, NewDollar(5).Equals(NewFranc(5)), "Dollar and Franc Not Equal!")
 }
 
 func TestFrancMultiplication(t *testing.T) {
