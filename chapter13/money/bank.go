@@ -8,5 +8,5 @@ func NewBank() *Bank {
 }
 
 func (b *Bank) Reduce(source Expression, to string) *Money {
-	return MakeDollar(10)
+	return source.Reduce(to)
 }

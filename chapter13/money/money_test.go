@@ -6,6 +6,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	EqualAlert = "they should be equal!"
+)
+
 func TestMultiplication(t *testing.T) {
 	var five, product *Money
 	five = MakeDollar(5)
@@ -26,7 +30,7 @@ func TestCurrency(t *testing.T) {
 	assert.Equal(t, "CHF", MakeFranc(1).Currency(), "they should be same currency!")
 }
 
-func TestSimpleAddition(t * testing.T) {
+func TestSimpleAddition(t *testing.T) {
 	var five *Money
 	var sum Expression
 	var bank *Bank
@@ -37,4 +41,36 @@ func TestSimpleAddition(t * testing.T) {
 	bank = NewBank()
 	reduced = bank.Reduce(sum, "USD")
 	assert.Equal(t, MakeDollar(10), reduced, "they should be equal!")
+}
+
+func TestPlusReturnsSum(t *testing.T) {
+	var five *Money
+	var result Expression
+	var sum *Sum
+
+	five = MakeDollar(5)
+	result = five.Plus(five)
+	sum = result.(*Sum)
+	assert.Equal(t, five, sum.augend, EqualAlert)
+	assert.Equal(t, five, sum.addend, EqualAlert)
+}
+
+func TestReduceSum(t *testing.T) {
+	var sum Expression
+	var bank *Bank
+	var result *Money
+
+	sum = NewSum(MakeDollar(3), MakeDollar(4))
+	bank = NewBank()
+	result = bank.Reduce(sum, "USD")
+	assert.Equal(t, MakeDollar(7), result, EqualAlert)
+}
+
+func TestReduceMoney(t *testing.T) {
+	var bank *Bank
+	var result *Money
+
+	bank = NewBank()
+	result = bank.Reduce(MakeDollar(1), "USD")
+	assert.Equal(t, MakeDollar(1), result, EqualAlert)
 }

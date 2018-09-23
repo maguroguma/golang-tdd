@@ -28,6 +28,9 @@ func (m *Money) Equals(comp_m *Money) bool {
 		return false
 	}
 }
-func (m *Money) Plus(addedMoney *Money) *Money {
-	return NewMoney(m.amount+addedMoney.amount, m.currency)
+func (m *Money) Plus(addend *Money) Expression {
+	return NewSum(m, addend)
+}
+func (m *Money) Reduce(to string) *Money {
+	return m
 }
