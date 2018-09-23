@@ -18,7 +18,7 @@ func MakeFranc(amount int) *Money {
 func (m *Money) Currency() string {
 	return m.currency
 }
-func (m *Money) Times(multiplier int) *Money {
+func (m *Money) Times(multiplier int) Expression {
 	return NewMoney(m.amount*multiplier, m.currency)
 }
 func (m *Money) Equals(comp_m *Money) bool {
@@ -28,7 +28,7 @@ func (m *Money) Equals(comp_m *Money) bool {
 		return false
 	}
 }
-func (m *Money) Plus(addend *Money) Expression {
+func (m *Money) Plus(addend Expression) Expression {
 	return NewSum(m, addend)
 }
 func (m *Money) Reduce(bank *Bank, to string) *Money {

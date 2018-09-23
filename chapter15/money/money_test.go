@@ -11,12 +11,10 @@ const (
 )
 
 func TestMultiplication(t *testing.T) {
-	var five, product *Money
+	var five *Money
 	five = MakeDollar(5)
-	product = five.Times(2)
-	assert.Equal(t, MakeDollar(10), product, "they should be equal!")
-	product = five.Times(3)
-	assert.Equal(t, MakeDollar(15), product, "they should be equal!")
+	assert.Equal(t, MakeDollar(10), five.Times(2), "they should be equal!")
+	assert.Equal(t, MakeDollar(15), five.Times(3), "they should be equal!")
 }
 
 func TestEquality(t *testing.T) {
@@ -92,4 +90,16 @@ func TestReduceMoneyDifferentCurrency(t *testing.T) {
 func TestArrayEquals(t *testing.T) {
 	assert.Equal(t, []interface{}{"abc", "def"}, []interface{}{"abc", "def"}, EqualAlert)
 	assert.ElementsMatch(t, []interface{}{"abc", "def"}, []interface{}{"abc", "def"}, EqualAlert)
+}
+
+func TestMixedAddition(t *testing.T) {
+	var fiveBucks, tenFrancs Expression
+	var result *Money
+
+	fiveBucks = MakeDollar(5)
+	tenFrancs = MakeFranc(10)
+	bank := NewBank()
+	bank.AddRate("CHF", "USD", 2)
+	result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD")
+	assert.Equal(t, MakeDollar(10), result, EqualAlert)
 }
