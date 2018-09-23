@@ -1,6 +1,7 @@
 package money
 
 type Expression interface {
-	Reduce(bank *Bank, to string) *Money
-	Plus(addend Expression) Expression
+	Reduce(*Bank, string) *Money
+	Plus(Expression) Expression
+	Times(int) Expression
 }
